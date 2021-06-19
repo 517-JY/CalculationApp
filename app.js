@@ -52,11 +52,19 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/demo", 
+app.get("/demo",
         function (req, res){res.render("demo");});
 
 app.get("/about", (request, response) => {
   response.render("about");
+});
+
+app.get("/quiz1", (request, response) => {
+  response.render("quiz1");
+});
+
+app.get("/grading", (request, response) => {
+  response.render("grading");
 });
 
 app.get("/form", (request,response) => {
@@ -67,6 +75,40 @@ app.post("/showformdata", (request,response) => {
   response.json(request.body)
 })
 
+app.get("/form2", (request,response) => {
+  response.render("form2")
+})
+
+
+app.post("/showNameAge", (request,response) => {
+  response.locals.name=request.body.fullname
+  response.locals.age =request.body.age
+  response.render("form2data")
+})
+
+
+
+app.post("/reflectFormData",(req,res) => {
+  res.locals.title = "Form Demo Page"
+  res.locals.name = req.body.fullname
+  res.locals.body = req.body
+  res.locals.demolist = [2,3,5,7,11,13]
+  res.render('reflectData')
+})
+
+
+
+app.get("/dataDemo", (request,response) => {
+  response.locals.name="Tim Hickey"
+  response.locals.vals =[1,2,3,4,5]
+  response.locals.people =[
+    {'name':'Tim','age':65},
+    {'name':'Yas','age':29}]
+  response.render("dataDemo")
+})
+
+
+
 // Here is where we will explore using forms!
 
 
@@ -75,7 +117,7 @@ app.post("/showformdata", (request,response) => {
 // and send it back to the browser in raw JSON form, see
 // https://covidtracking.com/data/api
 // for all of the kinds of data you can get
-app.get("/c19", 
+app.get("/c19",
   async (req,res,next) => {
     try {
       const url = "https://covidtracking.com/api/v1/us/current.json"
