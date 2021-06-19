@@ -1,0 +1,19 @@
+<%- include('bootheader') -%>
+<div class="jumbotron">
+    <h1>
+        Triangle Area Calculation
+    </h1>
+    <p><i>-- from lengths of 3 sides</i></p>
+</div>
+
+<form method="post" action="/calcTriangleArea" class="bg-info">
+What are the lengths for each side of your triangle?<br>
+    a:<input type="number" name="a"><br>
+    b:<input type="number" name="b"><br>
+    c:<input type="number" name="c"><br>
+    <input type="submit" value="Calculate Area">
+</form>
+
+
+
+<%- include('bootfooter') -%>

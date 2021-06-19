@@ -1,0 +1,17 @@
+<%- include('bootheader') -%>
+
+<%- include('menubar') -%>
+
+<div class="jumbotron">
+    <h1>
+        Cost per Person
+    </h1>
+    The cost per person for a meal for <%= numGuests %> people
+    that totaled $<%= mealCost %> with a tip of <%= tipRate %>%
+    is $<%= costPerPerson %>
+</div>
+<hr>
+
+<a href="/restaurantHelper">Calculate the cost per person for another meal</a>
+
+<%- include('bootfooter') -%>

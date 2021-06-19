@@ -52,6 +52,50 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// handling route of /triangleArea
+app.get("/triangleArea", (req, res) => {
+  res.render("triangleArea");
+});
+
+app.post("/calcTriangleArea", (req, res) => {
+
+    // converts form parameter from string to float 
+    const a = parseFloat(req.body.a);
+    const b = parseFloat(req.body.b);
+    const c = parseFloat(req.body.c);
+
+    const s = (a + b + c)/2;
+    const area = Math.sqrt(s*(s-a)*(s-b)*(s-c));
+
+    res.locals.a=a;
+    res.locals.b=b;
+    res.locals.c=c;
+    res.locals.area = area;
+
+    //res.json({'area': area,'s':s});
+    res.render("showTriangleArea");
+});
+
+
+app.get("/restaurantHelper", (req, res) => {
+    res.render("restaurant");
+});
+
+app.post("/restaurantHelper", (req, res) => {
+    const mealCost = parseFloat(req.body.mealCost);
+    const tipRate = parseFloat(req.body.tipRate);
+    const numGuests = parseFloat(req.body.numGuests);
+
+    res.locals.mealCost = mealCost;
+    res.locals.tipRate = tipRate;
+    res.locals.numGuests = numGuests;
+
+
+    res.locals.costPerPerson = (mealCost * (1 + tipRate/100) / numGuests).toFixed(2);
+    res.render("restaurantCost");
+});
+
+
 app.get("/demo",
         function (req, res){res.render("demo");});
 

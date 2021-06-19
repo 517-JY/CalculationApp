@@ -1,0 +1,23 @@
+<%- include('bootheader') -%>
+
+<%- include('menubar') -%>
+
+<div class="jumbotron">
+    <h1>
+        Meal Cost Calculation
+    </h1>
+</div>
+
+<form method="post" action="/restaurantHelper">
+    Total meal cost:
+    $<input type="text" name="mealCost"><br>
+    Tip rate:
+    <input type="text" name="tipRate">%<br>
+    Number of guests:
+    <input type="text" name="numGuests"><br>
+    <input type="submit" value="Calculate cost per Person">
+</form>
+
+
+
+<%- include('bootfooter') -%>
